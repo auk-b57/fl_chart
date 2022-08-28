@@ -881,7 +881,7 @@ class FlDotCirclePainter extends FlDotPainter {
             ..style = PaintingStyle.stroke
             ..maskFilter = MaskFilter.blur(
               BlurStyle.normal,
-              shadowRadius * 0.57735 + 0.5,
+              (shadowRadius ?? 0) * 0.57735 + 0.5,
             ),
         );
     }
