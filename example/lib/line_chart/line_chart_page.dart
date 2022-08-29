@@ -1,3 +1,4 @@
+import 'package:example/line_chart/samples/profit_graph.dart';
 import 'package:flutter/material.dart';
 
 import 'samples/line_chart_sample1.dart';
@@ -39,7 +40,7 @@ class LineChartPage extends StatelessWidget {
               left: 28,
               right: 28,
             ),
-            child: LineChartSample1(),
+            child: ProfitGraph(),
           ),
           SizedBox(
             height: 22,

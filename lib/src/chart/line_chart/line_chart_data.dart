@@ -849,7 +849,9 @@ class FlDotCirclePainter extends FlDotPainter {
 
   /// The stroke width to use for the circle
   double? shadowRadius;
-  
+
+  /// The stroke width to use for the circle
+  double? shadowSpread;
 
   /// The color of the circle is determined determined by [color],
   /// [radius] determines the radius of the circle.
@@ -862,28 +864,42 @@ class FlDotCirclePainter extends FlDotPainter {
     Color? strokeColor,
     double? strokeWidth,
     double? shadowRadius,
+    double? shadowSpread,
   })  : color = color ?? Colors.green,
         radius = radius ?? 4.0,
         strokeColor = strokeColor ?? Colors.green.darken(),
         strokeWidth = strokeWidth ?? 1.0,
+        shadowSpread = shadowSpread ?? 1.0,
         shadowRadius = shadowRadius ?? 0;
 
   /// Implementation of the parent class to draw the circle
   @override
   void draw(Canvas canvas, FlSpot spot, Offset offsetInCanvas) {
+    if ((shadowRadius ?? 0.0) != 0.0 &&
+        (shadowSpread ?? 0.0) != 0.0 &&
+        strokeColor.opacity != 0.0) {
+      canvas.drawCircle(
+        offsetInCanvas,
+        radius + (strokeWidth / 2),
+        Paint()
+          ..color = strokeColor
+          ..strokeWidth = shadowRadius!
+          ..style = PaintingStyle.stroke
+          ..maskFilter = MaskFilter.blur(
+            BlurStyle.normal,
+            shadowSpread! * 0.57735 + 0.5,
+          ),
+      );
+    }
     if (strokeWidth != 0.0 && strokeColor.opacity != 0.0) {
       canvas.drawCircle(
-          offsetInCanvas,
-          radius + (strokeWidth / 2),
-          Paint()
-            ..color = strokeColor
-            ..strokeWidth = strokeWidth
-            ..style = PaintingStyle.stroke
-            ..maskFilter = MaskFilter.blur(
-              BlurStyle.normal,
-              (shadowRadius ?? 0) * 0.57735 + 0.5,
-            ),
-        );
+        offsetInCanvas,
+        radius + (strokeWidth / 2),
+        Paint()
+          ..color = strokeColor
+          ..strokeWidth = strokeWidth
+          ..style = PaintingStyle.stroke,
+      );
     }
     canvas.drawCircle(
         offsetInCanvas,
