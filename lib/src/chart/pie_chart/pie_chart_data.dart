@@ -53,6 +53,7 @@ class PieChartData extends BaseChartData with EquatableMixin {
     double? startDegreeOffset,
     PieTouchData? pieTouchData,
     FlBorderData? borderData,
+    Color? shadowColor,
   })  : sections = sections?.where((element) => element.value != 0).toList() ??
             const [],
         centerSpaceRadius = centerSpaceRadius ?? double.infinity,
@@ -133,6 +134,12 @@ class PieChartSectionData {
   /// Defines the color of section.
   final Color color;
 
+  /// Defines the color of section.
+  final Color shadowColor;
+
+  /// Defines the color of section.
+  final double elevation;
+
   /// Defines the radius of section.
   final double radius;
 
@@ -198,8 +205,12 @@ class PieChartSectionData {
     Widget? badgeWidget,
     double? titlePositionPercentageOffset,
     double? badgePositionPercentageOffset,
+    double? elevation,
+    Color? shadowColor,
   })  : value = value ?? 10,
         color = color ?? Colors.cyan,
+        shadowColor = shadowColor ?? color ?? Colors.cyan,
+        elevation = elevation ?? 0.0,
         radius = radius ?? 40,
         showTitle = showTitle ?? true,
         titleStyle = titleStyle,

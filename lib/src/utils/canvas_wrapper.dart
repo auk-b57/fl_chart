@@ -71,6 +71,11 @@ class CanvasWrapper {
           Paint paint) =>
       canvas.drawArc(rect, startAngle, sweepAngle, useCenter, paint);
 
+  /// Directly calls [Canvas.drawCircle]
+  void drawShadow(Path path, Color color, double elevation,
+          {bool transparentOccluder = false}) =>
+      canvas.drawShadow(path, color, elevation, transparentOccluder);
+
   /// Paints a text on the [Canvas]
   ///
   /// Gets a [TextPainter] and call its [TextPainter.paint] using our canvas

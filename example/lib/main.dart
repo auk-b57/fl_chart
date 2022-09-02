@@ -44,7 +44,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _currentPage = 0;
 
-  final _controller = PageController(initialPage: 0);
+  final _controller = PageController(initialPage: 3);
   final _duration = const Duration(milliseconds: 300);
   final _curve = Curves.easeInOutCubic;
   final _pages = const [

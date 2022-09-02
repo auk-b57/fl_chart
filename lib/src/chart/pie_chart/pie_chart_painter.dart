@@ -112,6 +112,8 @@ class PieChartPainter extends BaseChartPainter<PieChartData> {
             centerRadius + (section.borderSide.width / 2),
             _sectionStrokePaint,
           );
+
+          // shadow
         }
         return;
       }
@@ -123,6 +125,11 @@ class PieChartPainter extends BaseChartPainter<PieChartData> {
         sectionDegree,
         center,
         centerRadius,
+      );
+      canvasWrapper.drawShadow(
+        sectionPath,
+        section.shadowColor,
+        section.elevation,
       );
 
       drawSection(section, sectionPath, canvasWrapper);
