@@ -117,10 +117,11 @@ class PieChart2State extends State {
           );
         case 1:
           return PieChartSectionData(
-            color: const Color(0xfff8b250),
+            color: const Color(0x55f8b250),
             value: 30,
             title: '30%',
             radius: radius,
+            transparentOccluder: false,
             titleStyle: TextStyle(
               fontSize: fontSize,
               fontWeight: FontWeight.bold,

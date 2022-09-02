@@ -137,8 +137,11 @@ class PieChartSectionData {
   /// Defines the color of section.
   final Color shadowColor;
 
-  /// Defines the color of section.
+  /// Defines the elevation of section.
   final double elevation;
+
+  /// Defines the elevation of section.
+  final bool transparentOccluder;
 
   /// Defines the radius of section.
   final double radius;
@@ -207,10 +210,12 @@ class PieChartSectionData {
     double? badgePositionPercentageOffset,
     double? elevation,
     Color? shadowColor,
+    bool? transparentOccluder,
   })  : value = value ?? 10,
         color = color ?? Colors.cyan,
         shadowColor = shadowColor ?? color ?? Colors.cyan,
         elevation = elevation ?? 0.0,
+        transparentOccluder = transparentOccluder ?? false,
         radius = radius ?? 40,
         showTitle = showTitle ?? true,
         titleStyle = titleStyle,

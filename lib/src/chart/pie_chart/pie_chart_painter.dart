@@ -130,6 +130,7 @@ class PieChartPainter extends BaseChartPainter<PieChartData> {
         sectionPath,
         section.shadowColor,
         section.elevation,
+        transparentOccluder: section.transparentOccluder,
       );
 
       drawSection(section, sectionPath, canvasWrapper);
